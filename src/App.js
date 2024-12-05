@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 const slogans = [
@@ -43,7 +42,7 @@ function App() {
 
   return (
     <div className="app">
-      <a name="top"></a>
+      <a name="top" href="top">.</a>
       <div className="video">
         <video autoPlay muted loop id="backgroundVideo">
           <source src={video} type="video/mp4"/>
@@ -52,7 +51,7 @@ function App() {
       </div>
       <div className="app-content">
         <ul className="header">
-          <li><a href="#top"><img src="logo.png" className="logo"/></a></li>
+          <li><a href="#top"><img src="logo.png" className="logo" alt="logo"/></a></li>
           <li><a href="#fitness">Fitness</a></li>
           <li><a href="#nutrition">Nutrition</a></li>
           <li><a href="#coaching">Coaching</a></li>
@@ -75,25 +74,25 @@ function App() {
           </div>        
         </div>
       </div>
-      <a name="fitness"></a>
+      <a name="fitness" href="fitness">.</a>
       <div className="section fitness">
         <div className="app-content">
           <h2>Fitness</h2>
         </div>
       </div>
-      <a name="nutrition"></a>
+      <a name="nutrition" href="nutrition">.</a>
       <div className="section nutrition">
         <div className="app-content">
           <h2>Nutrition</h2>
         </div>
       </div>
-      <a name="coaching"></a>
+      <a name="coaching" href="coaching">.</a>
       <div className="section coaching">
         <div className="app-content">
           <h2>Coaching</h2>
         </div>
       </div>
-      <a name="rehab"></a>
+      <a name="rehab" href="rehab">.</a>
       <div className="section rehab">
         <div className="app-content"> 
           <h2>Rehab</h2>
@@ -106,9 +105,9 @@ function App() {
 
         <footer className="app-footer">
           <div className="icons">
-            <img src="facebook.png" className="social"/>
-            <img src="logo.jpg" className="logo"/>
-            <img src="instagram.png" className="social"/>
+            <img src="facebook.png" className="social" alt="social"/>
+            <img src="logo.jpg" className="logo" alt="logo"/>
+            <img src="instagram.png" className="social" alt="social"/>
           </div>
         </footer>      
     </div>
