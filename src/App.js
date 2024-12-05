@@ -11,7 +11,7 @@ const slogans = [
   ["Rise", "Grind", "Repeat"],
   ["Dare", "to", "Endure"],
   ["Train", "Transform", "Triumph"],
-  ["Beyond", "Every", "Boundary"]
+  ["Beyond", "Every", "Boundary"],
 ];
 
 const videos = [
