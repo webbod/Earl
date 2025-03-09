@@ -9,7 +9,7 @@
   }
   
   .schedule-description {
-    max-width: 700px;
+    max-width: 780px;
     margin: 0 auto 2rem;
     font-size: 1.125rem;
     line-height: 1.6;
@@ -144,10 +144,17 @@
   
   .session-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .session-sub-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
   
   .session-icon {
@@ -164,6 +171,7 @@
   
   .session-title {
     flex: 1;
+    width: 100%;
   }
   
   .session-title h4 {
@@ -173,7 +181,8 @@
   
   .session-meta {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    justify-content: space-around;
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.7);
   }
@@ -247,6 +256,7 @@
     text-align: center;
     border-radius: 8px;
     color: rgba(255, 255, 255, 0.6);
+    display: none;
   }
   
   .schedule-cta {
@@ -275,7 +285,7 @@
     }
     
     .day-sessions {
-      height: 580px;
+      height: 590px;
       overflow-y: auto;
     }
     

@@ -7,7 +7,9 @@ import './components/InstagramGallery.css';
 
 import FitnessAssessmentWidget from './components/FitnessAssessmentWidget';
 import BlogComponent from './components/BlogComponent';
+import TrainingSchedule from './components/TrainingSchedule';
 import SEOSchema from './components/SEOSchema';
+import InstagramGallery from './components/InstagramGallery';
 
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
@@ -63,6 +65,15 @@ const wrapCharactersInSpan = (text, quote, start) => {
   );
 };
 
+const sloganRenderer = () => {
+  let slogan = slogans[Math.floor(Math.random() * slogans.length)];
+  return [
+    wrapCharactersInSpan(slogan[0], '&ldquo;', 0),
+    wrapCharactersInSpan(slogan[1], '', slogan[0].length),
+    wrapCharactersInSpan(slogan[2], '&rdquo;', slogan[0].length + slogan[1].length)
+  ];
+}
+
 function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [activeSection, setActiveSection] = useState('top');
@@ -84,7 +95,6 @@ function App() {
           break;
         } else if (scrollPosition < topPosition) {
           setActiveSection('top');
-          console.log(activeSection);
         }
       }
     }
@@ -125,6 +135,126 @@ function App() {
         <div className="overlay"></div>
       </div>
 
+      {/* Header/Navigation */}
+      <div className="app-content">
+        <ul className="header">
+          <li><a href="#top"><img src="logo.png" className="logo" alt="Earl James Personal Training Coventry"/></a></li>
+          <li className={activeSection === 'fitness' ? 'active' : ''}><a href="#fitness">Fitness</a></li>
+          <li className={activeSection === 'nutrition' ? 'active' : ''}><a href="#nutrition">Nutrition</a></li>
+          <li className={activeSection === 'coaching' ? 'active' : ''}><a href="#coaching">Coaching</a></li>
+          <li className={activeSection === 'rehab' ? 'active' : ''}><a href="#rehab">Rehab</a></li>
+        </ul>
+        
+        {/* Hero Section */}
+        <div className="spacer"></div>  
+        <div className="spacer"></div>         
+        <div className="content">
+          <div className="slogan">
+            {sloganRenderer()}
+          </div>
+          <div className="nameplate">
+            <p>Earl James</p>
+            <p>&nbsp;- Elite Personal Trainer in Coventry</p>
+          </div>
+          <div className="spacer"></div>
+          <div className="cta">
+            <a href="#assessment" className="cta-button primary">Free Assessment</a>
+            <a href="#contact" className="cta-button secondary">Book Now</a>
+          </div>        
+        </div>
+      </div>
+
+      {/* Fitness Section */}
+      <a id="fitness" href="#fitness">.</a>
+      <div className="section fitness">
+        <div className="app-content">
+          <h2>Fitness</h2>
+          <TrainingSchedule />
+        </div>
+      </div>
+
+      {/* Nutrition Section */}
+      <a id="nutrition" href="#nutrition">.</a>
+      <div className="section nutrition">
+        <div className="app-content">
+          <h2>Nutrition</h2>
+          <div className="section-content">
+            <div className="content-columns">
+              <div className="content-column">
+                <h3>Sustainable Nutrition Coaching</h3>
+                <p>Earl's approach to nutrition focuses on long-term habits rather than quick fixes. Drawing from his military background and nutrition qualifications, Earl develops practical eating plans that complement your training regimen.</p>
+                <p>As a Body Type Nutrition Coach, Earl understands that every body responds differently. His personalized nutrition strategies are designed for your specific metabolism, activity level, and goals.</p>
+                <p><strong>Services include:</strong></p>
+                <ul className="nutrition-list">
+                  <li>Body composition analysis</li>
+                  <li>Personalized meal planning</li>
+                  <li>Nutrition for performance optimization</li>
+                  <li>Sustainable habit formation</li>
+                  <li>Online and in-person coaching options</li>
+                </ul>
+                <a href="#assessment" className="section-button">Get Started</a>
+              </div>
+              <div className="content-column">
+                <img src="https://picsum.photos/id/225/500/700" alt="Nutrition Coaching with Earl James in Coventry" className="full-image" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Coaching Section */}
+      <a id="coaching" href="#coaching">.</a>
+      <div className="section coaching">
+        <div className="app-content">
+          <h2>Coaching</h2>
+          <div className="section-content">
+            <div className="coach-intro">
+              <div className="coach-image">
+                <img src="https://picsum.photos/id/433/400/400" alt="Earl James Personal Trainer Coventry" />
+              </div>
+              <div className="coach-bio">
+                <h3>Meet Your Coach: Earl James</h3>
+                <p>Earl brings a decade of Royal Marine experience to every training session. His journey from the frontlines of Afghanistan to becoming Coventry's premier fitness coach has equipped him with unique insights into human potential.</p>
+                <p>After overcoming a serious back injury sustained during military service, Earl transformed his rehabilitation experience into expertise that helps clients push past their own limitations.</p>
+                <div className="cert-container">
+                  <div className="cert">Level 4 Personal Trainer</div>
+                  <div className="cert">NLP Practitioner</div>
+                  <div className="cert">Life Coach</div>
+                  <div className="cert">GP Medical Referral Specialist</div>
+                  <div className="cert">Master Kettlebell Instructor</div>
+                  <div className="cert">Sports Massage Therapist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Rehab Section */}
+      <a id="rehab" href="#rehab">.</a>
+      <div className="section rehab">
+        <div className="app-content"> 
+          <h2>Rehab</h2>
+          <div className="section-content">
+            <div className="content-grid">
+              <div className="content-item">
+                <div className="content-text">
+                  <h3>Injury Rehabilitation</h3>
+                  <p>Earl's personal experience with rehabilitation after a prolapsed disc in Afghanistan gives him unique insight into recovery journeys. As a Postural Assessment & Corrective Exercise Instructor, he specializes in helping clients overcome injuries and build resilience.</p>
+                  <p>His GP Medical Referral Specialist qualification ensures safe, effective rehabilitation programs tailored to your specific condition.</p>
+                  <a href="#contact" className="section-button">Schedule Consultation</a>
+                </div>
+              </div>
+              <div className="content-item">
+                <div className="content-image">
+                  <img src="https://picsum.photos/id/473/500/340" alt="Rehabilitation Training with Earl James in Coventry" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+
       {/* Assessment Widget Section */}
       <a id="assessment" href="#assessment">.</a>
       <div className="section assessment-section">
@@ -136,7 +266,7 @@ function App() {
 
       {/* Blog Section */}
       <a id="blog" href="#blog">.</a>
-      <div className="blog-section section">
+      <div className="blog-section">
         <div className="app-content">
           <BlogComponent />
         </div>
@@ -183,6 +313,9 @@ function App() {
         </div>
       </div>
 
+      {/* Instagram Gallery */}
+      <InstagramGallery username="ejamespt" />
+
       {/* Contact Section */}
       <a id="contact" href="#contact">.</a>
       <div className="contact-section">
@@ -220,8 +353,9 @@ function App() {
       </div>
 
       {/* Quote Section */}
-      <div className="quote section">
-        <h2>&ldquo;Strength grows in the moments when you think you can't go on.&rdquo;</h2>
+      <div className="spacer"></div>
+      <div className="quote">
+        <p>&ldquo;Strength grows in the moments when you think you can't go on.&rdquo;</p>
       </div>
 
       {/* Footer */}
@@ -229,15 +363,7 @@ function App() {
         <div className="app-content">
           <div className="footer-content">
             <div className="footer-info">
-            <div className="icons">
-            <a href="https://www.facebook.com/earl.james.5473" target="_blank" rel="noopener noreferrer">
-              <img src="facebook.png" className="social" alt="Facebook"/>
-            </a>
-            <img src="logo.jpg" className="logo" alt="Earl James Personal Training Coventry"/>
-            <a href="https://www.instagram.com/ejamespt" target="_blank" rel="noopener noreferrer">
-              <img src="instagram.png" className="social" alt="Instagram"/>
-            </a>
-          </div>
+              <img src="logo.png" className="logo" alt="Earl James Personal Training Coventry" />
               <p>Royal Marine discipline. Proven results.</p>
               <p>Coventry's premier personal trainer.</p>
             </div>
@@ -257,6 +383,15 @@ function App() {
                 <a href="https://www.facebook.com/earl.james.5473">Facebook</a>
               </div>
             </div>
+          </div>
+          <div className="icons">
+            <a href="https://www.facebook.com/earl.james.5473" target="_blank" rel="noopener noreferrer">
+              <img src="facebook.png" className="social" alt="Facebook"/>
+            </a>
+            <img src="logo.jpg" className="logo" alt="Earl James Personal Training Coventry"/>
+            <a href="https://www.instagram.com/ejamespt" target="_blank" rel="noopener noreferrer">
+              <img src="instagram.png" className="social" alt="Instagram"/>
+            </a>
           </div>
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} Earl James Personal Training. All rights reserved.</p>

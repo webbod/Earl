@@ -11,7 +11,7 @@ body {
   --nutrition: rgba(16, 16, 128, 0.75);
   --coaching: rgba(16, 128, 128, 0.75);
   --rehab: rgba(128, 128, 16, 0.75);
-
+  --assessment: rgba(64, 64, 64, 0.75);
   --fitnessbg: rgba(128, 16, 128, 0.5);
   --nutritionbg: rgba(16, 16, 128, 0.5);
   --coachingbg: rgba(16, 128, 128, 0.5);
@@ -27,10 +27,14 @@ body {
   margin: 0;
   padding: 0;
 }
+a[id] {
+  display: none;
+}
 
 /* Layout - Preserve original width structure */
 .app-content {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   max-width: 1024px;
   min-height: 100vh;
@@ -193,27 +197,6 @@ body {
   }
 }
 
-.nameplate {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0;
-}
-
-.nameplate p {
-  font-size: 2.25rem;
-  font-weight: bold;
-  line-height: 2.625rem;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-}
-
-.nameplate p:nth-child(2) {
-  font-size: clamp(0.5rem, 6vw, 2.25rem);
-  font-weight: normal;
-}
-
 .hero-tagline p {
   font-size: 1.25rem;
   line-height: 1.5;
@@ -327,6 +310,7 @@ body {
 }
 
 .section h2 {
+  text-align: center;
   font-size: 4rem;
   font-weight: normal;
   letter-spacing: -0.25rem;
@@ -490,7 +474,7 @@ body {
 
 /* Assessment Widget */
 .assessment-section {
-  background-color: var(--primary-dark);
+  background-color: var(--assessment);
   padding: 4rem 0;
 }
 
@@ -855,19 +839,6 @@ body {
 
   .slogan p:nth-child(3) {
     text-align: right;
-  }
-
-  .nameplate {
-    flex-direction: row;
-  }
-
-  .nameplate p {
-    font-weight: bold;
-  }
-
-  .nameplate p:nth-child(2) {
-    font-size: 2.25rem;
-    font-weight: normal;
   }
 
   .cta {

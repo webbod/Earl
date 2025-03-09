@@ -14,7 +14,7 @@ const BlogComponent = () => {
       author: "Earl James",
       date: "March 2, 2025",
       readTime: "5 min read",
-      image: "https://placekitten.com/600/400",
+      image: "https://picsum.photos/id/476/600/400",
       tags: ["military fitness", "circuit training", "coventry gym", "hiit workouts"]
     },
     {
@@ -25,7 +25,7 @@ const BlogComponent = () => {
       author: "Earl James",
       date: "February 24, 2025",
       readTime: "7 min read",
-      image: "https://placekitten.com/601/400",
+      image: "https://picsum.photos/id/301/601/400",
       tags: ["nutrition coach", "weight loss", "diet tips", "coventry nutritionist"]
     },
     {
@@ -36,7 +36,7 @@ const BlogComponent = () => {
       author: "Earl James",
       date: "February 15, 2025",
       readTime: "6 min read",
-      image: "https://placekitten.com/602/400",
+      image: "https://picsum.photos/id/508/602/400",
       tags: ["injury recovery", "sports rehab", "coventry physiotherapy", "back pain"]
     },
     {
@@ -47,7 +47,7 @@ const BlogComponent = () => {
       author: "Earl James",
       date: "February 8, 2025",
       readTime: "4 min read",
-      image: "https://placekitten.com/603/400",
+      image: "https://picsum.photos/id/164/603/400",
       tags: ["mental strength", "discipline", "coventry coaching", "fitness motivation"]
     },
     {
@@ -58,7 +58,7 @@ const BlogComponent = () => {
       author: "Earl James",
       date: "January 30, 2025",
       readTime: "8 min read",
-      image: "https://placekitten.com/604/400",
+      image: "https://picsum.photos/id/222/604/400",
       tags: ["coventry gyms", "personal trainers", "fitness centers", "local training"]
     },
     {
@@ -69,7 +69,7 @@ const BlogComponent = () => {
       author: "Earl James",
       date: "January 22, 2025",
       readTime: "5 min read",
-      image: "https://placekitten.com/605/400",
+      image: "https://picsum.photos/id/312/605/400",
       tags: ["kettlebell training", "home workouts", "coventry fitness", "strength training"]
     }
   ];
@@ -90,7 +90,7 @@ const BlogComponent = () => {
   return (
     <div className="blog-component">
       <div className="blog-header">
-        <h2>Fitness Insights & Training Tips</h2>
+        <h2>Fitness Insights<br/>& Training Tips</h2>
         <p className="blog-description">
           Expert advice from Earl James, Coventry's premier personal trainer with Royal Marine experience.
           Stay updated with the latest in fitness, nutrition, and health.

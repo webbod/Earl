@@ -28,7 +28,7 @@ body {
   text-align: left;
   margin:0 auto;
   max-width: 1024px;
-  min-height: 100vh;
+  min-height: 20vh;
 }
 
 .spacer {
@@ -54,6 +54,7 @@ body {
   justify-content: space-between;
   padding: 0;
   margin: 0;
+  display: none;
 }
 
 .header li {
@@ -155,17 +156,12 @@ body {
 }
 
 .nameplate p {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   line-height: 2.625rem;
   margin:0;
   padding: 0;
   text-transform: uppercase;
-}
-
-.nameplate p:nth-child(2) {
-  font-size: clamp(0.5rem, 6vw, 2.25rem);
-  font-weight: normal;
 }
 
 .cta {
@@ -193,6 +189,14 @@ body {
   background: white;
   border: hsl(20, 80%, 40%) 1px solid;
   color: hsl(20, 80%, 40%);
+}
+
+
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
 }
 
 @media (min-height: 750px) {
@@ -239,11 +243,6 @@ body {
     font-weight: bold;
   }
 
-  .nameplate p:nth-child(2) {
-    font-size: 2.25rem;
-    font-weight: normal;
-  }
-
   .cta button {
     font-size: 1.875rem;
     font-weight: bold;
@@ -264,18 +263,21 @@ body {
   background-color: var(--fitness);
   display: flex;
   flex-direction: column;
-  height: calc(10 * var(--vh));
   justify-content: center;
+  align-items: center;
   margin: 0;
-  padding: 2rem 1rem;
+  height:auto;
+  padding: 4rem 4rem;
 }
 
-.quote p {
+.quote h2 {
+  width: 90%;
   font-size: 1.875rem;
   line-height: 2rem;
   margin:0;
   padding: 0;
   text-align: center;
+  font-size: 1.5rem;
   text-transform: uppercase;
 }
 
@@ -283,7 +285,7 @@ body {
 .section {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 20vh;
   justify-content: flex-start;
   margin: 0;
   padding: 2rem 1rem;
@@ -307,7 +309,7 @@ body {
   font-weight: normal;
   letter-spacing: -0.25rem;
   line-height: 5.125rem;
-  margin: calc(5 * var(--vh)) 0 0 0;
+  margin: calc(1 * var(--vh)) 0 0 0;
   padding: 0;
   text-transform: uppercase;
   font-family: 'Bungee Inline', sans-serif;
@@ -481,3 +483,21 @@ body {
   padding-bottom: 16px;
 }
 
+@media (max-width: 780px) {
+  html {
+    font-size: 14px;
+  }
+
+  .app-content {
+    padding: 0;
+  }
+
+  .section {
+    padding: 2rem 0.5rem;
+  }
+
+  .section h2 {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+}

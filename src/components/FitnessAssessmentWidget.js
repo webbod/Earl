@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowLeft, Check, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const FitnessAssessmentWidget = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -23,7 +24,8 @@ const FitnessAssessmentWidget = () => {
       options: [
         { value: 'beginner', label: 'Beginner - New to regular exercise' },
         { value: 'intermediate', label: 'Intermediate - Exercise 1-3 times per week' },
-        { value: 'advanced', label: 'Advanced - Exercise 4+ times per week' }
+        { value: 'advanced', label: 'Advanced - Exercise 4+ times per week' },
+        { value: 'athlete', label: 'Athlete -  Training several times per week' },
       ]
     },
     {
@@ -92,7 +94,7 @@ const FitnessAssessmentWidget = () => {
     if (currentStep < questions.length) {
       setCurrentStep(currentStep + 1);
     } else {
-      setShowResults(true);
+      handleSubmit();
     }
   };
 
@@ -103,9 +105,39 @@ const FitnessAssessmentWidget = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowResults(true);
-  };
+    e && e.preventDefault();
+
+    console.log('Submitting form:', formData);
+    // Prepare the form data - convert arrays to strings
+    const templateParams = {
+      fitnessLevel: formData.fitnessLevel,
+      fitnessGoals: formData.fitnessGoals.join(', '),
+      availability: formData.availability,
+      dietaryPreferences: formData.dietaryPreferences,
+      limitations: formData.limitations,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone
+    };
+
+    // Replace these with your actual EmailJS values
+    const serviceId = 'service_q5y5eun';  
+    const templateId = 'template_djx1yn9';
+    const publicKey = 'c8PQPcUPPAH7Gms6o';
+    
+    // Send the email
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response);
+        setShowResults(true); // Show success message or results page
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        // Handle error - show error message
+        setShowResults(true);
+      });
+};
+
 
   const resetForm = () => {
     setFormData({
@@ -128,16 +160,18 @@ const FitnessAssessmentWidget = () => {
     
     // Base recommendation on fitness level
     if (formData.fitnessLevel === 'beginner') {
-      recommendations.push("Starting with 2-3 sessions per week focusing on foundational movements and proper form.");
+      recommendations.push("Starting with 2 sessions per week focusing on foundational movements and proper form.");
     } else if (formData.fitnessLevel === 'intermediate') {
       recommendations.push("A mix of circuit training and focused strength sessions 3-4 times per week to challenge your current fitness level.");
     } else if (formData.fitnessLevel === 'advanced') {
       recommendations.push("High-intensity training 4-5 times per week with periodized programming to prevent plateaus and optimize results.");
+    } else if (formData.fitnessLevel === 'athlete') {
+      recommendations.push("Advanced training plan built around the needs of your sport to help you refine performance and boost recovery.");
     }
     
     // Add goal-specific recommendations
     if (formData.fitnessGoals.includes('weight-loss')) {
-      recommendations.push("Combination of strength training and HIIT sessions to maximize calorie burn and preserve muscle mass.");
+      recommendations.push("Combination of strength training and HIIT sessions to maximize calorie burn.");
     }
     
     if (formData.fitnessGoals.includes('muscle-gain')) {
@@ -276,7 +310,7 @@ const FitnessAssessmentWidget = () => {
     
     return (
       <div className="results-container">
-        <h3>Your Personalized Fitness Recommendations</h3>
+        <h3>Your Personalised Fitness Recommendations</h3>
         <div className="recommendations">
           {recommendations.map((rec, index) => (
             <div className="recommendation-item" key={index}>
@@ -287,12 +321,8 @@ const FitnessAssessmentWidget = () => {
         </div>
         
         <div className="results-action">
-          <p>Earl will contact you shortly to discuss your free assessment session and personalized plan.</p>
-          <div className="contact-details">
-            <p><strong>Name:</strong> {formData.name}</p>
-            <p><strong>Email:</strong> {formData.email}</p>
-            <p><strong>Phone:</strong> {formData.phone}</p>
-          </div>
+          <p>Thanks {formData.name}, Earl will contact you shortly to schedule a call to discuss your results.</p>
+          
           <button className="reset-button" onClick={resetForm}>
             Start New Assessment
           </button>
@@ -303,19 +333,7 @@ const FitnessAssessmentWidget = () => {
 
   return (
     <div className="fitness-assessment-widget">
-      <div className="assessment-progress">
-        {!showResults && (
-          <div className="progress-indicators">
-            {[...Array(questions.length + 1)].map((_, index) => (
-              <div 
-                key={index}
-                className={`progress-dot ${currentStep >= index ? 'active' : ''}`}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-      
+            
       <form onSubmit={handleSubmit}>
         {showResults ? (
           renderResults()
@@ -324,17 +342,30 @@ const FitnessAssessmentWidget = () => {
             {renderQuestion()}
             
             <div className="navigation-buttons">
-              {currentStep > 0 && (
+              {
                 <button 
                   type="button" 
-                  className="nav-button prev" 
+                  className='nav-button prev' disabled={currentStep === 0} 
                   onClick={prevStep}
                 >
                   <ArrowLeft size={20} />
-                  <span>Previous</span>
+                  <span>Back</span>
                 </button>
-              )}
+              } 
               
+              <div className="assessment-progress">
+                {!showResults && (
+                  <div className="progress-indicators">
+                    {[...Array(questions.length + 1)].map((_, index) => (
+                      <div 
+                        key={index}
+                        className={`progress-dot ${currentStep >= index ? 'active' : ''}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {currentStep < questions.length + 1 ? (
                 <button 
                   type="button" 
