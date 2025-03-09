@@ -173,20 +173,7 @@ function App() {
       <footer className="app-footer">
         <div className="app-content">
           <div className="footer-content">
-            <div className="footer-info">
-            <div className="icons">
-            <a href="https://www.facebook.com/earl.james.5473" target="_blank" rel="noopener noreferrer">
-              <img src="facebook.png" className="social" alt="Facebook"/>
-            </a>
-            <img src="logo.jpg" className="logo" alt="Earl James Personal Training Coventry"/>
-            <a href="https://www.instagram.com/ejamespt" target="_blank" rel="noopener noreferrer">
-              <img src="instagram.png" className="social" alt="Instagram"/>
-            </a>
-          </div>
-              <p>Royal Marine discipline. Proven results.</p>
-              <p>Coventry's premier personal trainer.</p>
-            </div>
-            <div className="footer-nav">
+          <div className="footer-nav">
               <div className="footer-nav-column">
                 <h4>Services</h4>
                 <a href="#fitness">Circuit Training</a>
@@ -202,9 +189,22 @@ function App() {
                 <a href="https://www.facebook.com/earl.james.5473">Facebook</a>
               </div>
             </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} Earl James Personal Training. All rights reserved.</p>
+            <div className="footer-info">
+              <div className="icons">
+                <a href="https://www.facebook.com/earl.james.5473" target="_blank" rel="noopener noreferrer">
+                  <img src="facebook.png" className="social" alt="Facebook"/>
+                </a>
+                <img src="logo.jpg" className="logo" alt="Earl James Personal Training Coventry"/>
+                <a href="https://www.instagram.com/ejamespt" target="_blank" rel="noopener noreferrer">
+                  <img src="instagram.png" className="social" alt="Instagram"/>
+                </a>
+              </div>
+              <br/>
+              <hr/>
+              <br/>
+              <p>&copy; {new Date().getFullYear()} Earl James.</p>
+              <p>Coventry's premier personal trainer.</p>             
+            </div>
           </div>
         </div>
       </footer>      

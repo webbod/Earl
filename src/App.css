@@ -413,10 +413,10 @@ body {
 
 .app-footer {
   background-color: #000000;
-  padding-top: 32px;
-  padding-bottom: 32px;
   text-align: center;
   box-shadow: inset 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  padding-top: 2rem;
+  padding-bottom: 0;
 }
 
 
