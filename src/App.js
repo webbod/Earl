@@ -11,20 +11,6 @@ import SEOSchema from './components/SEOSchema';
 
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
-// Preserving the original slogan and video functionality
-const slogans = [
-  ["Push", "Past", "Limits"],
-  ["Feel", "the", "Burn"],
-  ["Conquer", "Every", "Obstacle"],
-  ["Strive", "Sweat", "Succeed"],
-  ["Strength", "Through", "Struggle"],
-  ["Earn", "Your", "Strength"],
-  ["Rise", "Grind", "Repeat"],
-  ["Dare", "to", "Endure"],
-  ["Train", "Transform", "Triumph"],
-  ["Beyond", "Every", "Boundary"],
-];
-
 const videos = [
  "stretches.mp4", "shoulder taps.mp4", "planks.mp4", "clean to press.mp4", "boxer.mp4", 
  "lunges.mp4", "squat.mp4", "kettlebells.mp4", "ohp.mp4", "situps.mp4", "bench press.mp4", 
@@ -52,50 +38,9 @@ const testimonials = [
   }
 ];
 
-// Maintaining the original character animation function
-const wrapCharactersInSpan = (text, quote, start) => {
-  return (
-    <p>
-      {quote === '&ldquo;' ? <span style={{'--index' : 0}}>"</span> : ''}
-      {text.split('').map((char, index) => <span key={index} style={{ '--index': start + index + 1 }}>{char}</span>)}
-      {quote === '&rdquo;' ? <span style={{ '--index': start + text.length + 2 }}>"</span> : ''}
-    </p>
-  );
-};
-
 function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [activeSection, setActiveSection] = useState('top');
   let video = videos[Math.floor(Math.random() * videos.length)];
-  
-  const handleScroll = () => {
-    const sections = ['fitness', 'nutrition', 'coaching', 'rehab'];
-    const scrollPosition = window.scrollY;
-    
-    // Find which section is currently in view
-    for (const section of sections) {
-      const element = document.getElementById(section);
-      if (element) {
-        const topPosition = element.offsetTop - 100;
-        const bottomPosition = topPosition + element.offsetHeight;
-        
-        if (scrollPosition >= topPosition && scrollPosition < bottomPosition) {
-          setActiveSection(section);
-          break;
-        } else if (scrollPosition < topPosition) {
-          setActiveSection('top');
-          console.log(activeSection);
-        }
-      }
-    }
-  };
-  
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
   
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
