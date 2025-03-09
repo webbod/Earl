@@ -44,11 +44,11 @@ body {
 }
 
 .header {
-  max-width: 1024px;
+  max-width: 90%;
   width: 100%;
   display: flex;
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.5rem;
   height: calc(8 * var(--vh));
   align-items: center;
   justify-content: space-between;
