@@ -11,7 +11,7 @@ import TrainingSchedule from './components/TrainingSchedule';
 import SEOSchema from './components/SEOSchema';
 import InstagramGallery from './components/InstagramGallery';
 
-import { ChevronLeft, ChevronRight, Calendar, Star, Instagram, Mail, Phone } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 // Preserving the original slogan and video functionality
 const slogans = [
