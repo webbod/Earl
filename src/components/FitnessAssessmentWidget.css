@@ -39,6 +39,7 @@
     margin-bottom: 2rem;
   }
   
+  .contact-details-form h3,
   .question-container h3 {
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -80,8 +81,9 @@
   
   textarea {
     width: calc(100% - 2rem);
+    height: 350px;
     padding: 1rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -147,6 +149,7 @@
   /* Contact Details Form */
   .contact-details-form {
     margin-bottom: 2rem;
+    min-height: 480px;
   }
   
   .form-group {

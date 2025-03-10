@@ -207,7 +207,9 @@ const FitnessAssessmentWidget = () => {
     if (currentStep >= questions.length) {
       return (
         <div className="contact-details-form">
-          <h3>Just a few more details to complete your assessment</h3>
+          <h3>We need a few more details to complete your assessment</h3>
+          <hr/>
+          <br/>
           <div className="form-group">
             <label htmlFor="name">Your Name</label>
             <input
@@ -241,6 +243,9 @@ const FitnessAssessmentWidget = () => {
               required
             />
           </div>
+          <br/>
+          <hr/>
+          <p>We will only use this information to contact you about your assessment results.</p>
         </div>
       );
     }
