@@ -8,6 +8,7 @@ import './components/InstagramGallery.css';
 import FitnessAssessmentWidget from './components/FitnessAssessmentWidget';
 import BlogComponent from './components/BlogComponent';
 import SEOSchema from './components/SEOSchema';
+import TrainingSchedule from './components/TrainingSchedule';
 
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
@@ -69,6 +70,9 @@ function App() {
         </video>
         <div className="overlay"></div>
       </div>
+
+      {/* Training Calendar */}
+      <TrainingSchedule/>
 
       {/* Assessment Widget Section */}
       <a id="assessment" href="#assessment">.</a>

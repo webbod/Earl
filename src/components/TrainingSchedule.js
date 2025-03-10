@@ -3,6 +3,7 @@ import { Clock, MapPin, Users, Dumbbell, Heart, Flame, Zap, UserSearch, Weight }
 
 const TrainingSchedule = () => {
   const [viewMode, setViewMode] = useState('gym'); // 'gym' or 'zoom'
+  const [showDetails, setShowDetails] = useState(false);
   
   // Schedule data based on the circuit training document
   const trainingSchedule = [
@@ -14,16 +15,16 @@ const TrainingSchedule = () => {
           time: '6:15 AM',
           location: 'gym',
           description: 'Upper Body HIIT with moderate weights',
-          format: 'Matrix Format (20-30 Second Rounds)',
+          format: 'Matrix Format (20-30s Rounds)',
           exercises: ['Overhead Press', 'Bench Press', 'Rows', 'Push-ups', 'Dips'],
-          finisher: 'Bicep Curl and Skull Crusher Complex',
+          finisher: 'Bicep Curl and Skull Crushers',
           icon: <Dumbbell size={24} />
         },
         {
           time: '7:30 AM',
           location: 'zoom',
           description: 'Explosive Upper Body Training',
-          format: 'Matrix Format (20-30 Second Rounds)',
+          format: 'Matrix Format (20-30s Rounds)',
           exercises: ['Dumbbell Variations', 'Explosive Push-ups', 'Resistance Band Work'],
           finisher: 'Arm Farm Challenge',
           icon: <Zap size={24} />
@@ -38,7 +39,7 @@ const TrainingSchedule = () => {
           time: '6:15 AM',
           location: 'gym',
           description: 'Lower Body HIIT with full range of motion',
-          format: 'Matrix Format (20-30 Second Rounds)',
+          format: 'Matrix Format (20-30s Rounds)',
           exercises: ['Lunges', 'Squats', 'Kettlebell Swings', 'Broad Jumps', 'Box Step-Ups'],
           finisher: 'Bear Crawls, Monkey Crawls',
           icon: <Weight size={24} />
@@ -47,7 +48,7 @@ const TrainingSchedule = () => {
           time: '7:30 AM',
           location: 'zoom',
           description: 'Bodyweight Power',
-          format: 'Matrix Format (20-30 Second Rounds)',
+          format: 'Matrix Format (20-30s Rounds)',
           exercises: ['Jump Squats', 'Split Lunges', 'Glute Bridges', 'Calf Raises'],
           finisher: 'AMRAP Leg Burner',
           icon: <Zap size={24} />
@@ -92,9 +93,9 @@ const TrainingSchedule = () => {
           time: '6:15 AM',
           location: 'gym',
           description: 'Boxing drills, partner work, and high-intensity conditioning',
-          format: 'Partner Conditioning',
-          exercises: ['Shadow Boxing', 'Pad Work', 'Footwork Drills', 'Defense Techniques', 'Conditioning Rounds'],
-          finisher: 'Abs on fire with a high-volume core workout',
+          format: 'Fast paced 30s rounds',
+          exercises: ['Punching combos', 'Pad Work', 'Footwork Drills', 'Defense Techniques', 'Conditioning Rounds'],
+          finisher: 'High-volume core workout',
           icon: <UserSearch size={24} />
         }
       ]
@@ -106,14 +107,13 @@ const TrainingSchedule = () => {
         {
           time: '9:00 AM',
           location: 'gym',
-          description: 'Complete circuit challenge testing strength, endurance, and mental fortitude',
+          description: 'Complete circuit challenge: strength, endurance, mental fortitude',
           format: '12 Stations (30-40 Second Rounds)',
           exercises: [
             'Prowler Push', 'Clean to Press', 'Farmers Carry', 'Wall Balls', 
-            'Kettlebell Swings', 'Lunge Walk', 'Box Jumps', 'Rollout', 
-            'Dips', 'Push-Ups', 'Squat Thrusts', 'Abs'
+            'Kettlebell Swings'
           ],
-          finisher: '10 reps per exercise, lightning-speed round',
+          finisher: '10 rep lightning round',
           icon: <Flame size={24} />
         }
       ]
@@ -125,10 +125,10 @@ const TrainingSchedule = () => {
         {
           time: '10:00 AM',
           location: 'gym',
-          description: 'Battle your limits with intense partner workout',
-          format: '8 Stations (200m Run Between Stations)',
-          exercises: ['50 reps per station with 200m sprint between each'],
-          finisher: 'Team Challenge Finale',
+          description: 'Push your limits with an intense full-body partner workout',
+          format: '8 Stations 50 reps Each',
+          exercises: ['Lunge Walk', 'Box Jumps', 'Thrusters','Squat Thrusts', '200m run'],
+          finisher: 'You won\'t need one after this',
           icon: <Users size={24} />
         }
       ]
@@ -166,6 +166,12 @@ const TrainingSchedule = () => {
             <Users size={18} />
             <span>Zoom Sessions</span>
           </button>
+
+          
+          <button className="toggle-button" onClick={() => setShowDetails(!showDetails)}>
+            <input type="checkbox" id="showDetails" checked={showDetails}/> 
+              {showDetails ? "Hide " : "Show "} details
+          </button>
         </div>
       </div>
       
@@ -199,18 +205,20 @@ const TrainingSchedule = () => {
                     </div>
                     <div className="session-details">
                       <p className="session-description">{session.description}</p>
-                      <p className="session-format"><strong>Format:</strong> {session.format}</p>
-                      <div className="session-exercises">
-                        <strong>Sample exercises:</strong>
-                        <ul className="exercise-list">
-                          {session.exercises.map((exercise, eIdx) => (
-                            <li key={eIdx}>{exercise}</li>
-                          ))}
-                        </ul>
+                      <div className={`session-full-details ${showDetails ? "showDetails" : "hideDetails"}`}>
+                          <p className="session-format"><strong>Format:</strong> {session.format}</p>
+                          <div className="session-exercises">
+                            <strong>Sample exercises:</strong>
+                            <ul className="exercise-list">
+                              {session.exercises.map((exercise, eIdx) => (
+                                <li key={eIdx}>{exercise}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          {session.finisher && (
+                            <p className="session-finisher"><strong>Finisher:</strong> {session.finisher}</p>
+                          )}
                       </div>
-                      {session.finisher && (
-                        <p className="session-finisher"><strong>Finisher:</strong> {session.finisher}</p>
-                      )}
                     </div>
                     <div className="session-action">
                       <a href="#contact" className="book-button">Book This Session</a>

@@ -1,6 +1,7 @@
 /* Training Schedule Styles */
 .training-schedule {
-    padding: 2rem 0;
+    padding: 2rem;
+    background-color: rgba(96, 96, 96, 0.4);
   }
   
   .schedule-header {
@@ -16,6 +17,19 @@
     color: rgba(255, 255, 255, 0.8);
   }
   
+  .session-full-details {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+
+  .hideDetails {
+    max-height: 0;
+  }
+
+  .showDetails {
+    max-height: 500px;
+  }
+
   .view-toggle {
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +126,7 @@
   }
   
   .schedule-day {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     overflow: hidden;
   }
@@ -131,7 +145,7 @@
   }
   
   .session-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color:rgba(64, 64, 64, 0.6);
     border-radius: 8px;
     margin-bottom: 1.5rem;
     overflow: hidden;
@@ -285,7 +299,7 @@
     }
     
     .day-sessions {
-      height: 590px;
+      max-height: 590px;
       overflow-y: auto;
     }
     
