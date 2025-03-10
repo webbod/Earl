@@ -137,7 +137,7 @@ a[id] {
 #backgroundVideo {
   position: fixed;
   width: initial;
-  left: calc((1920px - 100vw) / -3);
+
   height: 100vh;
   z-index: -1;
   filter: blur(20px) grayscale(0.5);
@@ -820,10 +820,7 @@ a[id] {
     display: inline-block;
   }  
 
-  #backgroundVideo {
-    left: calc((1920px - 100vw) / -2);
-    height: 100vh;
-  }
+
 
   .slogan p {
     margin: 20px 0;
